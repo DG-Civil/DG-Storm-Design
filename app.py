@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 # =========================================================
-# 🎨 FORCE HEADLESS MATPLOTLIB (AVOIDS THREAD COLLISION)
+# ðﾟﾎﾨ FORCE HEADLESS MATPLOTLIB (AVOIDS THREAD COLLISION)
 # =========================================================
 import matplotlib
 matplotlib.use('Agg')  # Must run BEFORE importing pyplot
@@ -9,6 +10,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 import ezdxf
 from ezdxf.addons.drawing import RenderContext, Frontend
 from ezdxf.addons.drawing.matplotlib import MatplotlibBackend
+from ezdxf.addons.drawing.config import Configuration, TextPolicy
 import math
 import io
 import tempfile
@@ -51,12 +53,12 @@ else:
 # ====================== TITLE + EXPORT ======================
 col_title, col_export = st.columns([7, 2])
 with col_title:
-    st.title("🌧️ Storm Drainage Design Tool")
+    st.title("ðﾟﾌﾧ️ Storm Drainage Design Tool")
     st.markdown("*Developed by Dawit Ghebreyesus*")
 
 with col_export:
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("📥 Export All to Excel", use_container_width=True):
+    if st.button("ðﾟﾓﾥ Export All to Excel", use_container_width=True):
         output_buffer = io.BytesIO()
         with pd.ExcelWriter(output_buffer, engine='openpyxl') as output:
             st.session_state.nodes.to_excel(output, sheet_name="Nodes", index=False)
@@ -84,7 +86,7 @@ with col_export:
     uploaded_file = st.file_uploader("Upload Excel File", key="Import_Excel_file", type=["xlsx"])
 
     if uploaded_file is not None:
-        if st.button("🚀 Load Data to Tables", key="load_file"):
+        if st.button("ðﾟﾚﾀ Load Data to Tables", key="load_file"):
             try:
                 data = pd.read_excel(uploaded_file, sheet_name=None)
                 
@@ -169,7 +171,7 @@ if 'profile_file_path' not in st.session_state:
 if 'profile_filename' not in st.session_state:
     st.session_state.profile_filename = ""
 
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["📍 Nodes", "🔗 Links", "🌊 Drainage Area", "🚪 Inlets", "📏 Pipe Design", "🚧 Ditch Design", "📊 Profiles"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["ðﾟﾓﾍ Nodes", "ðﾟﾔﾗ Links", "ðﾟﾌﾊ Drainage Area", "ðﾟﾚﾪ Inlets", "ðﾟﾓﾏ Pipe Design", "ðﾟﾚﾧ Ditch Design", "ðﾟﾓﾊ Profiles"])
 
 # ====================== NODES ======================
 with tab1:
@@ -185,7 +187,7 @@ with tab1:
         column_config=node_config,
         key="nodes_editor_stable"
     )
-    if st.button("💾 Save Node Configurations", key="save_button_nodes", use_container_width=False):
+    if st.button("ðﾟﾒﾾ Save Node Configurations", key="save_button_nodes", use_container_width=False):
         if "nodes_editor_stable" in st.session_state:
             st.session_state.nodes = pd.DataFrame(edited_nodes)
             st.success("✅ Nodes configurations successfully saved to server state memory!")
@@ -209,7 +211,7 @@ with tab2:
         column_config=link_config, 
         key="links_editor_stable"
     )
-    if st.button("💾 Save Link Configurations", key="save_button_links", use_container_width=False):
+    if st.button("ðﾟﾒﾾ Save Link Configurations", key="save_button_links", use_container_width=False):
         if "links_editor_stable" in st.session_state:
             st.session_state.links = pd.DataFrame(edited_links)
             st.success("✅ Links configurations successfully saved to server state memory!")
@@ -217,8 +219,8 @@ with tab2:
 
 # ====================== DRAINAGE AREA ======================
 with tab3:
-    st.header("🌊 Drainage Area Analysis")
-    sub1, sub2, sub3 = st.tabs(["📊 Main Analysis", "📈 IDF Parameters", "🌿 Runoff Coefficients"])
+    st.header("ðﾟﾌﾊ Drainage Area Analysis")
+    sub1, sub2, sub3 = st.tabs(["ðﾟﾓﾊ Main Analysis", "ðﾟﾓﾈ IDF Parameters", "ðﾟﾌ﾿ Runoff Coefficients"])
     
     with sub1:
         st.subheader("Main Drainage Area Analysis")
@@ -329,7 +331,7 @@ with tab3:
             key="drainage_editor"
         )
 
-        if st.button("🔄 Calculate Drainage Areas Flows"):
+        if st.button("ðﾟﾔﾄ Calculate Drainage Areas Flows"):
             df = edited_df.copy()
             coeff_dict = {}
             for _, row in st.session_state.runoff_coeff.iterrows():
@@ -376,12 +378,12 @@ with tab3:
         edited_idf = st.data_editor(st.session_state.idf, num_rows="fixed", use_container_width=True, key="idf_editor_key")
         col1, col2 = st.columns([1, 5])
         with col1:
-            if st.button("💾 Update IDF", key="btn_update_idf"):
+            if st.button("ðﾟﾒﾾ Update IDF", key="btn_update_idf"):
                 st.session_state.idf = edited_idf
                 st.success("IDF parameters updated!")
                 st.rerun()
         with col2:
-            if st.button("🔄 Reset IDF", key="btn_reset_idf"):
+            if st.button("ðﾟﾔﾄ Reset IDF", key="btn_reset_idf"):
                 st.session_state.idf = pd.DataFrame({
                     'Parameter': ['a', 'b', 'c'],
                     '001-YR': [47.9309357, 10.48557697, 0.78944906],
@@ -400,12 +402,12 @@ with tab3:
         edited_runoff = st.data_editor(st.session_state.runoff_coeff, num_rows="dynamic", use_container_width=True, key="runoff_editor_key")
         col3, col4 = st.columns([1, 4])
         with col3:
-            if st.button("💾 Update Coefficients", key="btn_update_runoff"):
+            if st.button("ðﾟﾒﾾ Update Coefficients", key="btn_update_runoff"):
                 st.session_state.runoff_coeff = edited_runoff
                 st.success("Runoff coefficients updated!")
                 st.rerun()
         with col4:
-            if st.button("🔄 Reset Coefficients", key="btn_reset_runoff"):
+            if st.button("ðﾟﾔﾄ Reset Coefficients", key="btn_reset_runoff"):
                 st.session_state.runoff_coeff = pd.DataFrame({
                     'Land Cover': ['Paved', 'Grassed ROW slope', 'Rolling Pasture', 'Commercial', 'Residential','OFF-PFLUG' , 'Pave-PFLUG'],
                     '001-YR': [0.9, 0.7, 0.4, 0.95, 0.6, 0.73,0.88],
@@ -422,8 +424,8 @@ with tab3:
 
 # ====================== INLETS ======================
 with tab4:
-    st.header("🚪 Inlet Analysis")
-    if st.button("🔄 Sync Incoming Flows (From Drainage & Ditches)", key="btn_sync_flows"):
+    st.header("ðﾟﾚﾪ Inlet Analysis")
+    if st.button("ðﾟﾔﾄ Sync Incoming Flows (From Drainage & Ditches)", key="btn_sync_flows"):
         master_inlet_nodes = st.session_state.nodes[
             st.session_state.nodes['Type'] == 'Inlet'
         ]['Node Name'].astype(str).str.strip().tolist()
@@ -600,7 +602,7 @@ with tab4:
             key="inlets_editor_unique"
         )
 
-        if st.button("🚀 Calculate All Inlet Hydraulics"):
+        if st.button("ðﾟﾚﾀ Calculate All Inlet Hydraulics"):
             df = edited_inlets.copy()
             for i, row in df.iterrows():
                 node = row['Node Name']
@@ -665,8 +667,8 @@ with tab4:
 
 # ====================== PIPE DESIGN ======================
 with tab5:
-    st.header("📏 Pipe Design")
-    if st.button("🔄 Sync Incoming Flows (From Drainage & Inlets)", key="btn_sync_network_pipes"):
+    st.header("ðﾟﾓﾏ Pipe Design")
+    if st.button("ðﾟﾔﾄ Sync Incoming Flows (From Drainage & Inlets)", key="btn_sync_network_pipes"):
         st.session_state.cached_conduits = st.session_state.links[
             st.session_state.links['Type'].astype(str).str.contains('Conduit', case=False, na=False)
         ].copy()
@@ -912,7 +914,7 @@ with tab5:
             key="pipe_editor_stable"
         )
 
-        if st.button("🚀 Calculate All Pipe Hydraulics"):
+        if st.button("ðﾟﾚﾀ Calculate All Pipe Hydraulics"):
             df = edited_pipes.copy()
             for i, row in df.iterrows():
                 df.at[i, 'Discharge (cfs)'] = get_upstream_discharge(
@@ -928,7 +930,7 @@ with tab5:
                 
                 perc = float(hyd.get('% Full', 0))
                 filled = int(round(perc / 10))
-                color = "🟠" if perc < 30 else "🟢" if perc < 80 else "🟡" if perc <= 90 else "🔴"
+                color = "ðﾟﾟﾠ" if perc < 30 else "ðﾟﾟﾢ" if perc < 80 else "ðﾟﾟﾡ" if perc <= 90 else "ðﾟﾔﾴ"
                 bar = color * filled + "⬜" * (10 - filled)
                 updated.at[i, 'Visual'] = f"{bar} {perc:.1f}%"
 
@@ -938,13 +940,13 @@ with tab5:
 
         st.markdown("""
         **Visual Legend**  
-        🟠 Too small (< 30%) 🟢 Good (30–80%) 🟡 Caution (80–90%) 🔴 Over capacity (> 90%)
+        ðﾟﾟﾠ Too small (< 30%) ðﾟﾟﾢ Good (30–80%) ðﾟﾟﾡ Caution (80–90%) ðﾟﾔﾴ Over capacity (> 90%)
         """)
 
 # ====================== DITCH DESIGN TAB ======================
 with tab6:
-    st.header("🚧 Ditch Design")
-    if st.button("🔄 Sync Incoming Flows (From Drainage & Ditches)", key="btn_sync_network_ditches"):
+    st.header("ðﾟﾚﾧ Ditch Design")
+    if st.button("ðﾟﾔﾄ Sync Incoming Flows (From Drainage & Ditches)", key="btn_sync_network_ditches"):
         st.session_state.cached_ditches = st.session_state.links[
             st.session_state.links['Type'].astype(str).str.contains('Ditch', case=False, na=False)
         ].copy()
@@ -1188,7 +1190,7 @@ with tab6:
             key="ditch_editor_stable"
         )
         
-        if st.button("🚀 Calculate All Ditch Hydraulics"):
+        if st.button("ðﾟﾚﾀ Calculate All Ditch Hydraulics"):
             df = edited_ditches.copy()
             for i, row in df.iterrows():
                 df.at[i, 'Discharge (cfs)'] = get_upstream_discharge(
@@ -1204,7 +1206,7 @@ with tab6:
                 
                 perc = float(hyd.get('% Full', 0))
                 filled = int(round(perc / 10))
-                color = "🟠" if perc < 30 else "🟢" if perc < 80 else "🟡" if perc <= 90 else "🔴"
+                color = "ðﾟﾟﾠ" if perc < 30 else "ðﾟﾟﾢ" if perc < 80 else "ðﾟﾟﾡ" if perc <= 90 else "ðﾟﾔﾴ"
                 bar = color * filled + "⬜" * (10 - filled)
                 updated.at[i, 'Visual'] = f"{bar} {perc:.1f}%"
 
@@ -1213,14 +1215,14 @@ with tab6:
             st.rerun()
 
         st.markdown("""
-        **Visual Legend** 🟠 Too small (< 30%) 🟢 Good (30–80%) 🟡 Caution (80–90%) 🔴 Over capacity (> 90%)
+        **Visual Legend** ðﾟﾟﾠ Too small (< 30%) ðﾟﾟﾢ Good (30–80%) ðﾟﾟﾡ Caution (80–90%) ðﾟﾔﾴ Over capacity (> 90%)
         """)
 
 # ====================== PROFILES TAB ======================
 with tab7:
-    st.header("📊 Hydraulic Profile Generator")
+    st.header("ðﾟﾓﾊ Hydraulic Profile Generator")
 
-    st.markdown("#### 📐 Global Structural & Scaling Rules")
+    st.markdown("#### ðﾟﾓﾐ Global Structural & Scaling Rules")
     col_len_method, col_scale, col_exagg = st.columns(3)
     
     with col_len_method:
@@ -1251,7 +1253,7 @@ with tab7:
 
     updated_rows = []
     for idx, row in enumerate(st.session_state.profile_rows):
-        st.markdown(f"##### 📈 Profile Definition Line #{idx + 1}")
+        st.markdown(f"##### ðﾟﾓﾈ Profile Definition Line #{idx + 1}")
         
         (
             col_start, col_outfall, col_method, 
@@ -1292,7 +1294,7 @@ with tab7:
 
         with col_run:
             st.markdown("<br>", unsafe_allow_html=True)
-            if st.button("🚀 Run Profile", key=f"prof_run_{idx}", use_container_width=True, type="primary"):
+            if st.button("ðﾟﾚﾀ Run Profile", key=f"prof_run_{idx}", use_container_width=True, type="primary"):
                 if not s_node or not o_node:
                     st.error("❌ Select both nodes.")
                 elif s_node == o_node:
@@ -1424,7 +1426,10 @@ with tab7:
                                         ax.set_facecolor('#FFFFFF')
 
                                         backend = MatplotlibBackend(ax)
-                                        frontend = Frontend(ctx, backend)
+                                        render_config = Configuration.defaults().with_changes(
+                                            text_policy=TextPolicy.REPLACE
+                                        )
+                                        frontend = Frontend(ctx, backend, config=render_config)
                                         frontend.draw_layout(msp, finalize=True)
 
                                         for collection in ax.collections:
@@ -1494,7 +1499,7 @@ with tab7:
                                         "cad_bytes": cad_bytes,
                                         "pdf_bytes": pdf_bytes,
                                     }
-                                    st.success("🎉 Engineering CAD Profile successfully plotted!")
+                                    st.success("ðﾟﾎﾉ Engineering CAD Profile successfully plotted!")
                                     st.rerun()
 
                         # ✅ Updated code to capture the actual error text
@@ -1529,7 +1534,7 @@ with tab7:
             
             if is_generated and cad_bytes:
                 st.download_button(
-                    label=f"📥 CAD ({fmt})",
+                    label=f"ðﾟﾓﾥ CAD ({fmt})",
                     data=io.BytesIO(cad_bytes),
                     file_name=custom_download_name_cad,
                     mime="application/octet-stream",
@@ -1537,7 +1542,7 @@ with tab7:
                     key=f"profile_dl_btn_cad_{idx}"
                 )
             else:
-                st.button("📥 CAD Locked", disabled=True, use_container_width=True, key=f"profile_dl_cad_disabled_{idx}")
+                st.button("ðﾟﾓﾥ CAD Locked", disabled=True, use_container_width=True, key=f"profile_dl_cad_disabled_{idx}")
 
         with col_dl_pdf:
             st.markdown("<br>", unsafe_allow_html=True)
@@ -1545,7 +1550,7 @@ with tab7:
             
             if is_generated and pdf_bytes:
                 st.download_button(
-                    label="📄 Sheet (PDF)",
+                    label="ðﾟﾓﾄ Sheet (PDF)",
                     data=io.BytesIO(pdf_bytes),
                     file_name=custom_download_name_pdf,
                     mime="application/pdf",
@@ -1553,11 +1558,11 @@ with tab7:
                     key=f"profile_dl_btn_pdf_{idx}"
                 )
             else:
-                st.button("📄 PDF Locked", disabled=True, use_container_width=True, key=f"profile_dl_pdf_disabled_{idx}")
+                st.button("ðﾟﾓﾄ PDF Locked", disabled=True, use_container_width=True, key=f"profile_dl_pdf_disabled_{idx}")
 
         with col_remove:
             st.markdown("<br>", unsafe_allow_html=True)
-            if st.button("🗑️ Remove", key=f"prof_remove_{idx}", use_container_width=True) and len(st.session_state.profile_rows) > 1:
+            if st.button("ðﾟﾗﾑ️ Remove", key=f"prof_remove_{idx}", use_container_width=True) and len(st.session_state.profile_rows) > 1:
                 st.session_state.profile_rows.pop(idx)
                 if idx in st.session_state.profile_status: 
                     st.session_state.profile_status.pop(idx)
