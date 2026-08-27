@@ -357,7 +357,7 @@ def run_headless_pipeline(payload_path):
 
         # OS checking print logic (kept for consistency)
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        font_path = os.path.join(base_dir, "fonts", "Arial.ttf")
+        font_path = os.path.join(base_dir, "fonts", "arial.ttf")
         #if platform.system() == "Windows":
         #    font_path = "C:/Windows/Fonts/arial.ttf" if os.path.exists("C:/Windows/Fonts/arial.ttf") else "C:/Windows/Fonts/msgothic.ttc"
         #else:
