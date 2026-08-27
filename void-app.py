@@ -28,11 +28,6 @@ import os
 import traceback
 from datetime import datetime
 import platform
-import openpyxl
-
-
-
-
 
 st.set_page_config(page_title="Storm Drainage Design Tool", layout="wide")
 
@@ -1398,116 +1393,6 @@ with tab7:
                                 elif os.path.exists(output_filename_cad):
                                     try:
                                         doc_dxf = ezdxf.readfile(output_filename_cad)
-                                        
-                                        # # ========================================================
-                                        # # 🎨 FONT INJECTION: FORCE DXF TO USE BRUSHSCI.TTF
-                                        # # ========================================================
-                                        # # 1. Overwrite all text styles in the DXF to your custom font
-                                        # for style in doc_dxf.styles:
-                                        #     style.dxf.font = "consola.ttf"
-                                        # # ========================================================      
-                                        
-                                        # # ========================================================
-                                        # # 2. Re-enforce Matplotlib font properties for this render
-                                        # import matplotlib.font_manager as fm
-                                        # script_dir = os.path.dirname(os.path.abspath(__file__)).replace('\\', '/') if "__file__" in globals() or "__file__" in locals() else os.getcwd().replace('\\', '/')
-                                        # font_path = os.path.join(script_dir, "fonts", "consola.ttf")
-                                        
-                                        # if os.path.exists(font_path):
-                                        #     brush_font_name = fm.FontProperties(fname=font_path).get_name()
-                                        #     plt.rcParams['font.family'] = brush_font_name
-                                        #     plt.rcParams['font.sans-serif'] = [brush_font_name]
-                                        
-                                        
-
-                                        # ========================================================
-                                        # 🎨 DUAL EZDXF & MATPLOTLIB LOCAL FONT REGISTRATION
-                                        # ========================================================
-                                        
-                                        #AnonymousPro-Bold.ttf                      | Anonymous Pro   3
-                                        #Inconsolata_Condensed-Bold.ttf             | Inconsolata Condensed
-                                        #JetBrainsMono-Italic-VariableFont_wght.ttf | JetBrains Mono
-                                        #JetBrainsMono-VariableFont_wght.ttf        | JetBrains Mono
-                                        #JetBrainsMono-Bold.ttf                     | JetBrains Mono  2
-                                        #SourceCodePro-Italic-VariableFont_wght.ttf | Source Code Pro
-                                        #SourceCodePro-VariableFont_wght.ttf        | Source Code Pro 1
-                                        
-                                                                                
-                                        # # ========================================================
-                                        # # 🎨 ROBUST WINDOWS LOCAL FONT REGISTRATION
-                                        # # ========================================================
-                                        # import os
-                                        # import matplotlib.font_manager as fm
-                                        # import ezdxf
-                                        # from ezdxf.fonts import fonts
-                                        
-                                        # script_dir = os.path.dirname(os.path.abspath(__file__)).replace('\\', '/') if "__file__" in globals() or "__file__" in locals() else os.getcwd().replace('\\', '/')
-                                        # fonts_dir = os.path.join(script_dir, "fonts")
-                                        
-                                        # # Exact filename of your downloaded font file in the fonts folder
-                                        # font_filename = "JetBrainsMono-Bold.ttf"
-                                        # font_path = os.path.join(fonts_dir, font_filename)
-                                        
-                                        # if os.path.exists(font_path):
-                                        #     # 1. Register the local directory with ezdxf and rebuild its font cache
-                                        #     if fonts_dir not in ezdxf.options.support_dirs:
-                                        #         ezdxf.options.support_dirs.append(fonts_dir)
-                                        #     fonts.build_system_font_cache()
-                                            
-                                        #     # 2. Update DXF text styles using the exact FILENAME (required by ezdxf)
-                                        #     for style in doc_dxf.styles:
-                                        #         style.dxf.font = font_filename
-                                                
-                                        #     # 3. Register the binary file and internal family name with Matplotlib
-                                        #     fm.fontManager.addfont(font_path)
-                                        #     true_font_name = fm.FontProperties(fname=font_path).get_name()
-                                        #     plt.rcParams['font.family'] = true_font_name
-                                        #     plt.rcParams['font.sans-serif'] = [true_font_name]
-                                        # else:
-                                        #     st.warning(f"⚠️ Font file not found: {font_path}")
-                                        # # ========================================================         
-                                        
-                                        # ========================================================
-                                        # 🛠️ CORRECTED FONT PIPELINE LOADER
-                                        # ========================================================
-                                        import os
-                                        import matplotlib.font_manager as fm
-                                        import ezdxf
-                                        from ezdxf.fonts import fonts
-                                        
-                                        script_dir = os.path.dirname(os.path.abspath(__file__)).replace('\\', '/') if "__file__" in globals() or "__file__" in locals() else os.getcwd().replace('\\', '/')
-                                        fonts_dir = os.path.join(script_dir, "fonts").replace('\\', '/')
-                                        font_filename = "JetBrainsMono-Bold.ttf"
-                                        font_path = os.path.join(fonts_dir, font_filename).replace('\\', '/')
-                                        
-                                        if os.path.exists(font_path):
-                                            # 1. Register support directory and write config for ezdxf
-                                            ezdxf.options.set(ezdxf.options.CORE, "support_dirs", fonts_dir)
-                                            ezdxf.options.write_file()
-                                            
-                                            # 2. Rebuild cache to pick up the custom ttf file
-                                            try:
-                                                fonts.build_system_font_cache()
-                                            except Exception:
-                                                pass
-                                            
-                                            # 3. Resolve via ezdxf font face manager
-                                            resolved_face = fonts.get_font_face(font_filename)
-                                            
-                                            # 4. Configure Matplotlib rendering
-                                            fm.fontManager.addfont(font_path)
-                                            mpl_name = fm.FontProperties(fname=font_path).get_name()
-                                            plt.rcParams['font.family'] = mpl_name
-                                            plt.rcParams['font.sans-serif'] = [mpl_name]
-                                            
-                                            # 5. Map style to DXF document
-                                            for style in doc_dxf.styles:
-                                                style.dxf.font = font_filename
-                                        else:
-                                            st.error(f"⚠️ Critical: Font path not found at `{font_path}`")
-                                        # ========================================================                                        # ========================================================
-
-                                        
                                         msp = doc_dxf.modelspace()
 
                                         for layer in doc_dxf.layers:
@@ -1533,7 +1418,6 @@ with tab7:
 
                                         ctx = RenderContext(doc_dxf)
                                         ctx.set_current_layout(msp)
-                                    
 
                                         fig = plt.figure(figsize=(16.5, 11.7), dpi=600)
                                         ax = fig.add_axes([0.08, 0.08, 0.84, 0.84])
