@@ -1,0 +1,56 @@
+﻿Name,Structure_Code,Nominal_Size_FT,Length,Wall_Thickness_IN,Top_Thickness_IN,Bottom_Thickness_IN,Headloss_K_Value,Structure_Type,Specification_Source
+PAZD-(3x3),PAZD,3x3,3,6,6,6,0.5,Precast Area Zone Drain,TxDOT CD-PAZD-20
+PAZD-(4x4),PAZD,4x4,4,6,6,6,0.5,Precast Area Zone Drain,TxDOT CD-PAZD-20
+PAZD-(5x5),PAZD,5x5,5,6,6,6,0.5,Precast Area Zone Drain,TxDOT CD-PAZD-20
+PCO-(3x5_No_Ext),PCO,3x5_No_Ext,5,6,6,8,0.85,Precast Curb Inlet (Outside Roadway - 5ft Throat),TxDOT CD-PCO-23
+PCO-(3x5_One_Ext),PCO,3x5_One_Ext,5,6,6,8,0.85,Precast Curb Inlet (Outside Roadway - 10ft Throat),TxDOT CD-PCO-23
+PCO-(3x5_Two_Ext),PCO,3x5_Two_Ext,5,6,6,8,0.85,Precast Curb Inlet (Outside Roadway - 15ft Throat),TxDOT CD-PCO-23
+PCO-(4x10_No_Ext),PCO,4x10_No_Ext,10,6,6,8,0.85,Precast Curb Inlet (Outside Roadway - 10ft Throat),TxDOT CD-PCO-23
+PCO-(4x10_One_Ext),PCO,4x10_One_Ext,10,6,6,8,0.85,Precast Curb Inlet (Outside Roadway - 15ft Throat),TxDOT CD-PCO-23
+PCU-(3x5_No_Ext),PCU,3x5_No_Ext,5,6,6,8,0.85,Precast Curb Inlet (Under Roadway - 5ft Throat),TxDOT CD-PCU-23
+PCU-(3x5_One_Ext),PCU,3x5_One_Ext,5,6,6,8,0.85,Precast Curb Inlet (Under Roadway - 10ft Throat),TxDOT CD-PCU-23
+PCU-(3x5_Two_Ext),PCU,3x5_Two_Ext,5,6,6,8,0.85,Precast Curb Inlet (Under Roadway - 15ft Throat),TxDOT CD-PCU-23
+PCU-(4x10_No_Ext),PCU,4x10_No_Ext,10,6,6,8,0.85,Precast Curb Inlet (Under Roadway - 10ft Throat),TxDOT CD-PCU-23
+PCU-(4x10_One_Ext),PCU,4x10_One_Ext,10,6,6,8,0.85,Precast Curb Inlet (Under Roadway - 15ft Throat),TxDOT CD-PCU-23
+PCU-(5x10_No_Ext),PCU,5x10_No_Ext,10,6,6,8,0.85,Precast Curb Inlet (Under Roadway - 10ft Heavy Duty),TxDOT CD-PCU-23
+PRM-(4ft_Dia),PRM,4ft_Dia,4,5,6,8,0.5,Precast Round Manhole (Straight Run),TxDOT CD-PRM-20
+PRM-(5ft_Dia),PRM,5ft_Dia,5,6,8,8,0.6,Precast Round Manhole (45 deg Deflection),TxDOT CD-PRM-20
+PRM-(6ft_Dia),PRM,6ft_Dia,6,7,8,8,0.8,Precast Round Manhole (90 deg Deflection),TxDOT CD-PRM-20
+PRM-(7ft_Dia),PRM,7ft_Dia,7,8,10,12,0.8,Precast Round Manhole (With Laterals),TxDOT CD-PRM-20
+PJB-(3x3),PJB,3x3,3,8,10,10,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(4x4),PJB,4x4,4,8,10,10,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(5x5),PJB,5x5,5,8,10,10,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(6x6),PJB,6x6,6,8,10,10,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(7x7),PJB,7x7,7,8,12,12,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(8x8),PJB,8x8,8,10,12,12,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(9x9),PJB,9x9,9,10,12,12,1,Precast Junction Box,TxDOT CD-PJB-20
+PJB-(10x10),PJB,10x10,10,12,14,14,1,Precast Junction Box,TxDOT CD-PJB-20
+JBOX_CIP-(Custom_CIP),JBOX_CIP,Custom_CIP,10,8,10,12,1,Cast-In-Place Junction Box (Variable),TxDOT Item 465
+I-AD-1_FTW-(3x3_Riser),I-AD-1_FTW,3x3_Riser,3,6,6,8,0.5,Area / Ditch Inlet Type 1 (No Base Box),TxDOT FTW I-AD-1
+I-AD-2_FTW-(3x3_on_Base),I-AD-2_FTW,3x3_on_Base,3,6,6,8,0.8,Area / Ditch Inlet Type 2 (Variable Base),TxDOT FTW I-AD-2
+I-FG_FTW-(3x3_Base),I-FG_FTW,3x3_Base,3,6,6,8,0.5,Free-Standing Grated Inlet,TxDOT FTW I-FG
+I-FGR_FTW-(3x3_on_Box),I-FGR_FTW,3x3_on_Box,3,6,6,10,0.85,Grated Inlet Stacked on Box Culvert,TxDOT FTW I-FGR
+I-CO_FTW-(5ft_Opening),I-CO_FTW,5ft_Opening,5,6,6,8,0.85,Curb Inlet Outside Pavement (5ft Box Base),TxDOT FTW I-CO
+I-CO_FTW-(10ft_Opening),I-CO_FTW,10ft_Opening,10,6,6,10,0.85,Curb Inlet Outside Pavement (10ft Box Base),TxDOT FTW I-CO
+I-CO_FTW-(15ft_Opening),I-CO_FTW,15ft_Opening,15,8,6,10,0.85,Curb Inlet Outside Pavement (15ft Box Base),TxDOT FTW I-CO
+I-CO_FTW-(20ft_Opening),I-CO_FTW,20ft_Opening,20,8,8,12,0.85,Curb Inlet Outside Pavement (20ft Box Base),TxDOT FTW I-CO
+I-CO-C_FTW-(5x10_Box_Base),I-CO-C_FTW,5x10_Box_Base,10,8,6,10,0.9,Curb Inlet Outside Pavement Over Box Culvert,TxDOT FTW I-CO-C
+I-CU_FTW-(5ft_Opening),I-CU_FTW,5ft_Opening,5,6,6,10,0.85,Curb Inlet Under Pavement (5ft Box Base),TxDOT FTW I-CU
+I-CU_FTW-(10ft_Opening),I-CU_FTW,10ft_Opening,10,6,6,10,0.85,Curb Inlet Under Pavement (10ft Box Base),TxDOT FTW I-CU
+I-CU_FTW-(15ft_Opening),I-CU_FTW,15ft_Opening,15,8,8,12,0.85,Curb Inlet Under Pavement (15ft Box Base),TxDOT FTW I-CU
+I-CU_FTW-(20ft_Opening),I-CU_FTW,20ft_Opening,20,8,8,12,0.85,Curb Inlet Under Pavement (20ft Box Base),TxDOT FTW I-CU
+I-CU-C_FTW-(5x10_Box_Base),I-CU-C_FTW,5x10_Box_Base,10,10,8,10,0.9,Curb Inlet Under Pavement Over Box Culvert,TxDOT FTW I-CU-C
+I-COB_FTW-(5ft_Opening),I-COB_FTW,5ft_Opening,5,6,6,10,0.85,Curb Inlet Open Back / Bypass (5ft Base),TxDOT FTW I-COB
+I-COB_FTW-(10ft_Opening),I-COB_FTW,10ft_Opening,10,6,6,10,0.85,Curb Inlet Open Back / Bypass (10ft Base),TxDOT FTW I-COB
+I-COB_FTW-(15ft_Opening),I-COB_FTW,15ft_Opening,15,8,6,12,0.85,Curb Inlet Open Back / Bypass (15ft Base),TxDOT FTW I-COB
+I-COB_FTW-(20ft_Opening),I-COB_FTW,20ft_Opening,20,8,8,12,0.85,Curb Inlet Open Back / Bypass (20ft Base),TxDOT FTW I-COB
+I-COB-C_FTW-(5x10_Box_Base),I-COB-C_FTW,5x10_Box_Base,10,8,6,10,0.95,Curb Inlet Open Back Over Box Culvert,TxDOT FTW I-COB-C
+I-RWF_FTW-(3x3_Riser),I-RWF_FTW,3x3_Riser,3,6,6,8,0.7,Roadway Winged Flume Inlet,TxDOT FTW I-RWF
+TY_SD_FTW-(7x3_Base),TY_SD_FTW,7x3_Base,3,8,10,10,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(7x4_Base),TY_SD_FTW,7x4_Base,4,8,10,10,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(7x5_Base),TY_SD_FTW,7x5_Base,5,8,10,10,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(7x6_Base),TY_SD_FTW,7x6_Base,6,8,10,12,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(7x7_Base),TY_SD_FTW,7x7_Base,7,8,12,12,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(8x3_Base),TY_SD_FTW,8x3_Base,3,10,10,12,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(8x4_Base),TY_SD_FTW,8x4_Base,4,10,10,12,1,Type SD Storm Drain Junction Manhole,TxDOT FTW TY SD
+TY_SD_FTW-(10x10_Base),TY_SD_FTW,10x10_Base,10,12,14,14,1,Type SD Large Storm Drain Junction Manhole,TxDOT FTW TY SD
