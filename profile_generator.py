@@ -356,12 +356,14 @@ def run_headless_pipeline(payload_path):
             } for n in nodes_list}
 
         # OS checking print logic (kept for consistency)
-        if platform.system() == "Windows":
-            font_path = "C:/Windows/Fonts/arial.ttf" if os.path.exists("C:/Windows/Fonts/arial.ttf") else "C:/Windows/Fonts/msgothic.ttc"
-        else:
-            linux_arial = "/usr/share/fonts/truetype/msttcorefonts/Arial.ttf"
-            linux_fallback = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-            font_path = linux_arial if os.path.exists(linux_arial) else linux_fallback
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        font_path = os.path.join(base_dir, "fonts", "Arial.ttf")
+        #if platform.system() == "Windows":
+        #    font_path = "C:/Windows/Fonts/arial.ttf" if os.path.exists("C:/Windows/Fonts/arial.ttf") else "C:/Windows/Fonts/msgothic.ttc"
+        #else:
+        #    linux_arial = "/usr/share/fonts/truetype/msttcorefonts/Arial.ttf"
+        #    linux_fallback = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+        #    font_path = linux_arial if os.path.exists(linux_arial) else linux_fallback
         
         print(f"[FONT SETUP] Active font path selected: {font_path} (Used for reference, ezdxf handles native styles)")
 
